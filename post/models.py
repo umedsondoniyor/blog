@@ -7,6 +7,7 @@ class Post(models.Model):
     content = models.TextField(verbose_name="İçerik")
     publishing_date = models.DateTimeField(verbose_name="Yayımlanma Tarihi", auto_now_add=True)
     image = models.ImageField(null=True, blank=True)
+    slug = models.SlugField(unique=True)
 
     def __str__(self):
         return self.title
