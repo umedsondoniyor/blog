@@ -9,6 +9,6 @@ def home_view(request):
         }
     else:
         context = {
-            'isim': 'Misafir Kullanıcı'
+            'isim': 'You are my guest'
         }
     return render(request, 'home.html', context)

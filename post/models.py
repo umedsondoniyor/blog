@@ -4,10 +4,10 @@ from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 
 class Post(models.Model):
-    user =models.ForeignKey('auth.User', verbose_name='Yazar', related_name='posts')
-    title = models.CharField(max_length=120, verbose_name="Başlık")
-    content = RichTextField(verbose_name="İçerik")
-    publishing_date = models.DateTimeField(verbose_name="Yayımlanma Tarihi", auto_now_add=True)
+    user =models.ForeignKey('auth.User', verbose_name='Author', related_name='posts')
+    title = models.CharField(max_length=120, verbose_name="Title")
+    content = RichTextField(verbose_name="Content")
+    publishing_date = models.DateTimeField(verbose_name="Publishing Date", auto_now_add=True)
     image = models.ImageField(null=True, blank=True)
     slug = models.SlugField(unique=True, editable=False, max_length=130)
 
@@ -47,8 +47,8 @@ class Comment(models.Model):
 
     post = models.ForeignKey('post.Post', related_name='comments', on_delete=models.CASCADE)
 
-    name = models.CharField(max_length=200, verbose_name='isim')
-    content = models.TextField(verbose_name='Yorum')
+    name = models.CharField(max_length=200, verbose_name='name')
+    content = models.TextField(verbose_name='Comment')
 
     created_date = models.DateTimeField(auto_now_add=True)
 

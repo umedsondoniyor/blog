@@ -13,7 +13,7 @@ class LoginForm(forms.Form):
         if username and password:
             user = authenticate(username=username, password=password)
             if not user:
-                raise forms.ValidationError("Kullanıcı adını veya şifreyi yanlış girdiniz!")
+                raise forms.ValidationError("Wrong username or password!")
         return super(LoginForm, self).clean()
 
 
@@ -34,5 +34,5 @@ class RegisterForm(forms.ModelForm):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Şifreler eşleşmiyor!")
+            raise forms.ValidationError("Wrong password!")
         return password2

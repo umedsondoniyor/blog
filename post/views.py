@@ -5,8 +5,6 @@ from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 
-
-
 def post_index(request):
     posts_list = Post.objects.all()
 
@@ -44,7 +42,6 @@ def post_detail(request, slug):
         comment.save()
         return HttpResponseRedirect(post.get_absolute_url())
 
-
     context = {
         'post': post,
         'form': form,
@@ -78,7 +75,7 @@ def post_create(request):
         post = form.save(commit=False)
         post.user = request.user
         post.save()
-        messages.success(request, "Başarılı bir şekilde oluşturdunuz.", extra_tags='mesaj-basarili')
+        messages.success(request, "Post is successfully created.", extra_tags='mesaj-basarili')
         return HttpResponseRedirect(post.get_absolute_url())
 
     context = {
@@ -98,7 +95,7 @@ def post_update(request, slug):
     form = PostForm(request.POST or None, request.FILES or None, instance=post)
     if form.is_valid():
         form.save()
-        messages.success(request, "Başarılı bir şekilde güncellediniz.")
+        messages.success(request, "Post is successfully updated.")
         return HttpResponseRedirect(post.get_absolute_url())
 
     context = {
