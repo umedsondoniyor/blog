@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     #Kendi uygulamalarim
     'post',
+
     #3.parti uygulamalar
     'crispy_forms',
     'django_cleanup',
